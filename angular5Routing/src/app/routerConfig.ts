@@ -8,10 +8,10 @@ import {LoginComponent} from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 export const appRoutes: Routes = [
  { path: '', redirectTo: './dashboard', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent},
-  { path: 'about', component: AboutComponent  },
-  { path: 'dashboard', component: DashboardComponent , resolve: { hnData: HnResolver }},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent , data: { animation: 'home' }},
+  { path: 'about', component: AboutComponent , data: { animation: 'about' } },
+  { path: 'dashboard', component: DashboardComponent , resolve: { hnData: HnResolver } , data: { animation: 'dashboard' }},
+  { path: 'login', component: LoginComponent , data: { animation: 'login' }},
+  { path: 'register', component: RegisterComponent , data: { animation: 'register' }},
   { path: '**', redirectTo: './dashboard'},
 ];

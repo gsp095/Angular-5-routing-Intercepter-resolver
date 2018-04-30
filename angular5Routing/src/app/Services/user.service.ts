@@ -10,7 +10,7 @@ import { Location  } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class UserService {
-    apiUrl = 'http://localhost:63715/api';
+    apiUrl = 'http://localhost:92/api';
 
     constructor(private http: HttpClient) { }
     create(user: User) {

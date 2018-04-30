@@ -2,16 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, UserService } from '../Services/index';
 import { User } from '../models/index';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('popOverState', [
+      state('show', style({
+        opacity: 1
+      })),
+      state('hide',   style({
+        opacity: 0
+      })),
+      transition('show => hide', animate('1000ms ease-out')),
+      transition('hide => show', animate('0ms ease-in'))
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
   model:  any = {};
   loading = false;
   returnUrl: string;
   user: any = [];
+  show = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -20,6 +40,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+  get stateName() {
+    return this.show ? 'show' : 'hide';
+  }
+
+
+  toggle() {
+    this.show = !this.show;
   }
   login() {
     this.loading = true;
